@@ -1,60 +1,77 @@
 const takeoverButton = document.querySelector(".takeover-button");
 const takeover = takeoverButton.querySelector(".takeover");
-const circle = takeover.querySelector(".circle");
 const bg = takeover.querySelector(".background");
-const lineOne = takeover.querySelector(".line-1");
-const lineTwo = takeover.querySelector(".line-2");
-
+const button = takeoverButton.querySelector(".button");
+const circle = button.querySelector(".circle");
+const lineOne = button.querySelector(".line-1");
+const lineTwo = button.querySelector(".line-2");
 const lines = [lineOne, lineTwo];
 
 const toggleTakeover = new TimelineMax({ paused: true, reversed: true });
+const transition = new TimelineMax({ paused: true, reversed: true });
 
 toggleTakeover
   .to(
     takeover,
     0.2,
     {
-      scaleX: "15",
-      scaleY: "15",
-      x: "-50",
-      y: "-200",
+      width: "800px",
+      height: "800px",
+      x: "-290px",
+      y: "-740px",
       ease: Power2.easeInOut,
-      transformOrigin: "50% 50%"
+      transformOrigin: "center center"
     },
-    0
+    0.4
   )
-  // .to(
-  //   circle,
-  //   0.2,
-  //   {
-  //     ease: Power2.easeInOut,
-  //     transformOrigin: "0% 0%"
-  //   },
-  //   0
-  // )
-  // .to(
-  //   lines,
-  //   0.2,
-  //   {
-  //     rotation: 720,
-  //     ease: Power2.easeInOut,
-  //     transformOrigin: "0 0"
-  //   },
-  //   0
-  // )
   .to(
-    bg,
+    lines,
     0.2,
     {
-      scale: 5,
+      rotation: 90,
       ease: Power2.easeInOut,
-      transformAroundCenter: { scale: 1.05 }
+      transformOrigin: "center center"
     },
     0
   );
 
+transition
+  .to(
+    circle,
+    0.2,
+    {
+      ease: Power2.easeInOut,
+      transformOrigin: "0% 0%"
+    },
+    0.2
+  )
+  .to(lines, 0.2, { opacity: 0, ease: Power2.easeInOut }, 0)
+  .to(
+    button,
+    0.2,
+    {
+      width: "200vw",
+      height: "200vh",
+      ease: Power2.easeInOut,
+      transformOrigin: "center center",
+      x: "-100vw",
+      y: "-100vh"
+    },
+    0.2
+  )
+  .to(
+    circle,
+    0.2,
+    {
+      scale: 1.2,
+      ease: Power2.easeInOut,
+      transformOrigin: "center center"
+    },
+    0.2
+  );
+
 takeoverButton.addEventListener("mouseenter", () => {
-  if (takeover.classList.contains("js-x")) {
+  if (takeoverButton.classList.contains("js-x")) {
     return;
   } else {
     toggleTakeover.reversed() ? toggleTakeover.play() : null;
@@ -62,11 +79,17 @@ takeoverButton.addEventListener("mouseenter", () => {
 });
 
 takeoverButton.addEventListener("mouseleave", () => {
-  if (takeover.classList.contains("js-x")) {
+  if (takeoverButton.classList.contains("js-x")) {
     return;
   } else {
     toggleTakeover.reversed() ? null : toggleTakeover.reverse();
   }
+});
+
+takeoverButton.addEventListener("click", () => {
+  takeoverButton.classList.toggle("js-x");
+  toggleTakeover.reverse();
+  transition.reversed() ? transition.play() : transition.reverse();
 });
 
 // const toggleMenu = new TimelineMax({ paused: true, reversed: true });

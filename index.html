@@ -13,6 +13,8 @@
         justify-content: center;
         align-items: center;
         margin: 0;
+        overflow: hidden;
+        background-color: #f7f7f7;
       }
 
       .takeover-button {
@@ -28,7 +30,12 @@
         height: 50px;
         cursor: pointer;
         pointer-events: none;
-        /* fill: "#ffe4ca"; */
+        position: absolute;
+      }
+
+      .button {
+        z-index: 1;
+        position: relative;
       }
     </style>
   </head>
@@ -41,7 +48,7 @@
       >
         <circle
           class="background"
-          fill="#ffe4ca"
+          fill="#aed6ae"
           r="25"
           cx="25"
           cy="25"
