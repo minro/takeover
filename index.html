@@ -25,10 +25,14 @@
         cursor: pointer;
       }
 
+      .takeover-button.active {
+        pointer-events: none;
+        cursor: default;
+      }
+
       .takeover {
         width: 50px;
         height: 50px;
-        cursor: pointer;
         pointer-events: none;
         position: absolute;
       }
@@ -36,6 +40,11 @@
       .button {
         z-index: 1;
         position: relative;
+      }
+
+      .button.active {
+        pointer-events: none;
+        cursor: default;
       }
     </style>
   </head>

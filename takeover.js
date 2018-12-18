@@ -19,7 +19,7 @@ toggleTakeover
       height: "800px",
       x: "-290px",
       y: "-740px",
-      ease: Power2.easeInOut,
+      ease: Expo.easeOut,
       transformOrigin: "center center"
     },
     0.4
@@ -29,7 +29,7 @@ toggleTakeover
     0.2,
     {
       rotation: 90,
-      ease: Power2.easeInOut,
+      ease: Expo.easeOut,
       transformOrigin: "center center"
     },
     0
@@ -40,34 +40,34 @@ transition
     circle,
     0.2,
     {
-      ease: Power2.easeInOut,
+      ease: Expo.easeOut,
       transformOrigin: "0% 0%"
     },
     0.2
   )
-  .to(lines, 0.2, { opacity: 0, ease: Power2.easeInOut }, 0)
+  .to(lines, 0.2, { opacity: 0, ease: Expo.easeOut }, 0)
   .to(
     button,
-    0.2,
+    0.8,
     {
       width: "200vw",
       height: "200vh",
-      ease: Power2.easeInOut,
+      ease: Expo.easeInOut,
       transformOrigin: "center center",
       x: "-100vw",
       y: "-100vh"
     },
-    0.2
+    0.3
   )
   .to(
     circle,
-    0.2,
+    0.8,
     {
       scale: 1.2,
-      ease: Power2.easeInOut,
+      ease: Expo.easeInOut,
       transformOrigin: "center center"
     },
-    0.2
+    0.3
   );
 
 takeoverButton.addEventListener("mouseenter", () => {
@@ -89,5 +89,11 @@ takeoverButton.addEventListener("mouseleave", () => {
 takeoverButton.addEventListener("click", () => {
   takeoverButton.classList.toggle("js-x");
   toggleTakeover.reverse();
-  transition.reversed() ? transition.play() : transition.reverse();
+  if (transition.reversed()) {
+    transition.play();
+    // button.classList.add("active");
+    // takeoverButton.classList.add("active");
+  } else {
+    transition.reverse();
+  }
 });
