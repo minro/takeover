@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Takeover xtravaganza</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .takeover-button {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        box-shadow: 0px 1px 19px -6px black;
+        cursor: pointer;
+      }
+
+      .takeover {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        pointer-events: none;
+        /* fill: "#ffe4ca"; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="takeover-button">
+      <svg
+        class="takeover"
+        xlmns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+      >
+        <circle
+          class="background"
+          fill="#ffe4ca"
+          r="25"
+          cx="25"
+          cy="25"
+        ></circle>
+      </svg>
+      <svg
+        class="button"
+        xlmns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+      >
+        <circle class="circle" fill="white" r="25" cx="25" cy="25"></circle>
+        <line
+          class="line line-1"
+          x1="15"
+          x2="35"
+          y1="25"
+          y2="25"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        ></line>
+        <line
+          class="line line-2"
+          x1="25"
+          x2="25"
+          y1="15"
+          y2="35"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        ></line>
+      </svg>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="takeover.js"></script>
+  </body>
+</html>
